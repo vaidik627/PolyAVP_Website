@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#061B2B">
+<title>PolyAVP</title>
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#061B2B;--bg2:#0B2A42;--line:#1B4A6E;--fg:#EAF6FF;--muted:#9FBBD0;
+  --a1:#19D3C5;--on1:#061B2B;--a2:#A78BFA;--on2:#061B2B;--a3:#5EEAD4;--on3:#061B2B;
+  --gut:max(clamp(20px,5vw,80px),calc((100vw - 1360px)/2));
+  --head:'Sora','Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px;overflow-x:clip}
+body{margin:0;width:100%;min-height:100vh;overflow-x:clip;background:var(--bg);color:var(--fg);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+h1,h2,h3{font-family:var(--head);margin:0}
+section,header,footer{width:100%;padding-left:var(--gut);padding-right:var(--gut)}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.eyebrow:before{content:"";width:28px;height:2px;background:currentColor;display:block}
+.display{font-weight:700;letter-spacing:-.025em;line-height:1.12;margin:16px 0 0;font-size:clamp(26px,3.2vw,42px)}
+
+/* header */
+header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;background:rgba(6,27,43,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(27,74,110,.7)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:22px;letter-spacing:-.02em}
+.logo i{width:20px;height:20px;background:var(--a1);transform:rotate(45deg);border-radius:5px;display:block;box-shadow:8px 8px 0 -2px var(--a2)}
+nav{display:flex;align-items:center;gap:6px 28px;font-size:15px;font-weight:500}
+nav a.link{padding:10px 0;color:var(--muted);transition:color .2s ease}
+nav a.link:hover{color:var(--fg)}
+.menu{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line);background:transparent;color:var(--fg);align-items:center;justify-content:center}
+.menu span,.menu span:before,.menu span:after{display:block;width:20px;height:2px;background:currentColor;border-radius:2px;position:relative;transition:transform .25s ease,background .25s ease}
+.menu span:before,.menu span:after{content:"";position:absolute;left:0}
+.menu span:before{top:-6px}.menu span:after{top:6px}
+.menu[aria-expanded="true"] span{background:transparent}
+.menu[aria-expanded="true"] span:before{top:0;transform:rotate(45deg)}
+.menu[aria-expanded="true"] span:after{top:0;transform:rotate(-45deg)}
+.btn{display:inline-block;border:0;border-radius:999px;font-size:15px;font-weight:600;text-align:center;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,.28)}
+
+/* intro */
+#intro{position:relative;min-height:min(calc(100svh - 64px),820px);display:flex;flex-wrap:wrap;align-items:center;gap:56px;padding-top:56px;padding-bottom:72px;overflow:hidden;background-image:radial-gradient(rgba(234,246,255,.10) 1px,transparent 1px);background-size:30px 30px}
+#glow{position:absolute;pointer-events:none;width:460px;height:460px;border-radius:50%;background:var(--a1);opacity:.16;filter:blur(90px);transition:left .25s ease-out,top .25s ease-out;left:40%;top:10%}
+.ring{position:absolute;right:-200px;top:-220px;width:600px;height:600px;border:1.5px dashed var(--a2);border-radius:50%;opacity:.5;animation:spin 50s linear infinite;translate:0 var(--p1,0px)}
+.col{flex:1 1 500px;min-width:0;position:relative}
+.col2{flex:1 1 400px;min-width:0;position:relative;display:flex;flex-direction:column;gap:16px;max-width:560px}
+h1{margin:22px 0 0;font-weight:700;font-size:clamp(34px,4.6vw,64px);line-height:1.04;letter-spacing:-.035em}
+.lead{margin:24px 0 0;max-width:520px;font-size:clamp(16px,1.2vw,18px);line-height:1.7;color:var(--muted)}
+.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.rise2{animation:rise .9s .15s cubic-bezier(.2,.8,.2,1) both}
+.rise3{animation:rise .9s .3s cubic-bezier(.2,.8,.2,1) both}
+.swap{animation:rise .5s ease both}
+.topics{display:flex;flex-wrap:wrap;gap:12px}
+.topic{display:flex;flex-direction:column;gap:4px;text-align:left;border-radius:16px;padding:16px 20px;flex:1 1 180px;border:1.5px solid var(--line);background:var(--bg2);color:var(--fg);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.topic:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,.28)}
+.topic small{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.85}
+.topic span{font-family:var(--head);font-size:clamp(16px,1.5vw,19px);font-weight:600;letter-spacing:-.01em}
+.topic.on1{background:var(--a1);border-color:var(--a1);color:var(--on1)}
+.topic.on3{background:var(--a2);border-color:var(--a2);color:var(--on2)}
+.panel{background:var(--bg2);border:1.5px solid var(--line);border-radius:20px;padding:clamp(20px,2.4vw,28px);min-height:150px}
+.panel p{margin:12px 0 0;font-size:clamp(15px,1.2vw,17px);line-height:1.7}
+.shape{position:absolute;border-radius:8px}
+.f1{right:-10px;top:-50px;width:44px;height:44px;background:var(--a2);animation:float 7s ease-in-out infinite;translate:0 var(--p2,0px)}
+.f2{left:-20px;bottom:-40px;width:36px;height:36px;background:var(--a3);animation:float 9s ease-in-out infinite reverse;translate:0 var(--p3,0px)}
+
+/* ticker */
+.marq{background:var(--a2);color:var(--on2);padding:14px 0;overflow:hidden;white-space:nowrap}
+.marq div{display:flex;gap:40px;width:max-content;animation:marq 32s linear infinite;font-family:var(--head);font-weight:600;font-size:clamp(14px,1.5vw,19px);text-transform:uppercase;letter-spacing:.14em}
+
+/* services */
+#services{padding-top:clamp(56px,7vw,104px);padding-bottom:clamp(56px,7vw,104px);transition:background .4s ease,color .4s ease}
+.svchead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.tabs{display:flex;gap:6px;background:rgba(0,0,0,.2);padding:5px;border-radius:999px}
+.tabs button{border:0;border-radius:999px;padding:11px 26px;min-height:44px;font-size:15px;font-weight:600;transition:all .25s ease;background:transparent;color:inherit}
+.tabs button.on{background:var(--fg);color:var(--bg)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:clamp(28px,4vw,44px);align-items:start}
+.card{text-align:left;border:1.5px solid var(--line);background:var(--bg2);color:var(--fg);border-radius:20px;padding:clamp(22px,2.4vw,28px);min-height:220px;width:100%;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 0 rgba(0,0,0,.22);border-color:var(--a1)}
+.card .top{display:flex;justify-content:space-between;align-items:center}
+.card .n{font-family:var(--head);font-size:clamp(34px,3.6vw,46px);font-weight:700;line-height:1;color:var(--a1);letter-spacing:-.03em}
+.card .ic{width:36px;height:36px;border-radius:50%;background:var(--fg);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1}
+.card h3{margin:24px 0 0;font-size:clamp(18px,1.6vw,21px);font-weight:600;line-height:1.3;letter-spacing:-.015em}
+.card p{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--muted)}
+.card .more{margin-top:18px;padding-top:18px;border-top:1.5px solid var(--line);font-size:15px;line-height:1.65;color:var(--fg)}
+
+/* work */
+#work{padding-top:clamp(56px,7vw,104px);padding-bottom:clamp(56px,7vw,104px)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:clamp(28px,4vw,44px)}
+.tile{border-radius:20px;padding:24px;min-height:190px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;transition:transform .25s ease,box-shadow .25s ease}
+.tile:hover{transform:translateY(-5px);box-shadow:0 12px 0 rgba(0,0,0,.22)}
+.tile small{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.tile div{font-family:var(--head);font-size:clamp(20px,2vw,26px);font-weight:600;line-height:1.25;letter-spacing:-.02em}
+.review{margin-top:20px;background:var(--bg2);border:1.5px solid var(--line);border-radius:24px;padding:clamp(24px,3.4vw,48px);display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between}
+.review .q{flex:1 1 420px;min-width:0}
+.review .mark{font-family:var(--head);font-size:80px;line-height:.6;color:var(--a1)}
+.review p{margin:0;font-family:var(--head);font-size:clamp(18px,2vw,28px);line-height:1.45;font-weight:500;letter-spacing:-.015em}
+.review .who{margin-top:20px;font-size:15px;color:var(--muted)}
+.review .who strong{color:var(--fg)}
+.ctrl{display:flex;gap:10px;align-items:center}
+.arrow{width:46px;height:46px;border-radius:50%;font-size:20px;border:1.5px solid var(--fg);background:transparent;color:var(--fg);transition:transform .2s ease}
+.arrow:hover{transform:scale(1.08)}
+.arrow.fill{border:0;background:var(--a1);color:var(--on1)}
+.dot{height:10px;border:0;border-radius:999px;padding:0;width:10px;background:var(--line);transition:all .25s ease}
+.dot.on{background:var(--a1);width:28px}
+
+/* contact */
+#contact{background:var(--a1);color:var(--on1);padding-top:clamp(56px,7vw,88px);padding-bottom:clamp(56px,7vw,88px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px}
+#contact h2{flex:1 1 440px;min-width:0;font-weight:700;font-size:clamp(28px,4.4vw,60px);line-height:1.1;letter-spacing:-.03em}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;padding-bottom:24px;font-size:14px;color:var(--muted);border-top:1px solid var(--line)}
+:focus-visible{outline:3px solid var(--a2);outline-offset:3px}
+
+/* scroll animation */
+#bar{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--a1);transform-origin:0 50%;transform:scaleX(0);z-index:100;pointer-events:none}
+header{transition:padding .3s ease,box-shadow .3s ease}
+header.scrolled{padding-top:8px;padding-bottom:8px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
+.js .reveal{opacity:0}
+.js .reveal.in{opacity:1;animation:revealUp .9s var(--d,0s) cubic-bezier(.2,.8,.2,1) backwards}
+.js .reveal.l.in{animation-name:revealL}
+.js .reveal.r.in{animation-name:revealR}
+.js .reveal.s.in{animation-name:revealS}
+@keyframes revealUp{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
+@keyframes revealL{from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:none}}
+@keyframes revealR{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:none}}
+@keyframes revealS{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(45deg)}50%{transform:translateY(-18px) rotate(52deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* mobile */
+@media (max-width:760px){
+  .menu{display:flex}
+  nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;padding:6px var(--gut) 18px;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:flex}
+  nav a.link{padding:15px 0;font-size:17px;border-bottom:1px solid var(--line);color:var(--fg)}
+  nav a.btn{margin-top:14px;padding:15px 24px}
+  #intro{min-height:0;padding-top:36px;padding-bottom:56px;gap:36px}
+  .col2{max-width:none}
+  .ring{width:340px;height:340px;right:-150px;top:-130px}
+  .tabs{width:100%}
+  .tabs button{flex:1;padding:12px 10px}
+  .review .ctrl{width:100%;justify-content:space-between}
+  .f1,.f2{display:none}
+  #contact .btn{width:100%;padding:16px 24px;overflow-wrap:anywhere}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="bar" aria-hidden="true"></div>
+
+<header>
+  <a href="#intro" class="logo"><i aria-hidden="true"></i>PolyAVP</a>
+  <button type="button" class="menu" id="menu" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+  <nav id="nav">
+    <a class="link" href="#intro">Introduction</a>
+    <a class="link" href="#services">Services</a>
+    <a class="link" href="#work">Work &amp; Reviews</a>
+    <a class="btn" href="#contact" style="background:var(--a1);color:var(--on1);padding:11px 22px">Get in touch</a>
+  </nav>
+</header>
+
+<section id="intro">
+  <div id="glow" aria-hidden="true"></div>
+  <div class="ring" aria-hidden="true"></div>
+  <div class="col">
+    <div class="eyebrow rise" style="color:var(--a1);display:inline-flex;align-items:center;gap:10px">01 — Introduction</div>
+    <h1 class="rise2">Many skills.<br><span style="color:var(--a1)">One</span> partner.</h1>
+    <p class="lead rise3">[Two sentences introducing PolyAVP: who you are, who you help and the result clients can expect.]</p>
+    <div class="rise3" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:36px">
+      <a class="btn" href="#services" style="background:var(--a3);color:var(--on3);font-size:16px;padding:14px 28px">See our services</a>
+      <a class="btn" href="#work" style="border:2px solid var(--fg);color:var(--fg);font-size:16px;padding:12px 28px">Work we did</a>
+    </div>
+  </div>
+  <div class="col2">
+    <div class="topics">
+      <button type="button" class="topic" id="t-why"><small>01</small><span>Why we are different</span></button>
+      <button type="button" class="topic" id="t-meaning"><small>02</small><span>PolyAVP meaning</span></button>
+    </div>
+    <div class="panel" id="topic-panel"></div>
+    <div class="shape f1" aria-hidden="true"></div>
+    <div class="shape f2" aria-hidden="true"></div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div>
+  <span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span><span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span><span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span><span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span>
+</div></div>
+
+<section id="services">
+  <div class="svchead">
+    <div class="reveal l" style="flex:1 1 380px;min-width:0">
+      <div class="eyebrow">02 — Services we provide</div>
+      <h2 class="display">Pick a side. We cover both.</h2>
+    </div>
+    <div class="tabs reveal r" role="group" aria-label="Service category">
+      <button type="button" id="tab-tech">Technical</button>
+      <button type="button" id="tab-mkt">Marketing</button>
+    </div>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="work">
+  <div class="eyebrow reveal" style="color:var(--a1)">03 — Work we did &amp; reviews</div>
+  <h2 class="display reveal" style="max-width:760px;--d:.1s">Proof, in our clients&rsquo; words.</h2>
+  <div class="tiles">
+    <div class="tile reveal l" style="background:var(--a3);color:var(--on3)"><small>[Technical]</small><div>[Project name]</div></div>
+    <div class="tile reveal" style="background:var(--a1);color:var(--on1);--d:.15s"><small>[Marketing]</small><div>[Project name]</div></div>
+    <div class="tile reveal r" style="background:var(--a2);color:var(--on2);--d:.3s"><small>[Both]</small><div>[Project name]</div></div>
+  </div>
+  <div class="review reveal s">
+    <div class="q swap" id="review"></div>
+    <div class="ctrl">
+      <button type="button" class="arrow" id="prev" aria-label="Previous review">&larr;</button>
+      <span id="dots" style="display:contents"></span>
+      <button type="button" class="arrow fill" id="next" aria-label="Next review">&rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="reveal l">Ready to build something with PolyAVP?</h2>
+  <a class="btn reveal r" href="mailto:[YOUR EMAIL]" style="background:var(--fg);color:var(--bg);font-size:16px;padding:16px 32px;--d:.2s">[YOUR EMAIL]</a>
+</section>
+<footer class="reveal"><span>&copy; PolyAVP</span><span>[Location] &middot; [Social links]</span></footer>
+
+<script>
+(function () {
+  var COPY = {
+    tech: ['[Technical service one]', '[Technical service two]', '[Technical service three]'],
+    mkt: ['[Marketing service one]', '[Marketing service two]', '[Marketing service three]']
+  };
+  var REVIEWS = [
+    { q: '[Client review one. Paste a real testimonial here.]', n: '[Client name]', r: '[Role, Company]' },
+    { q: '[Client review two. Paste a real testimonial here.]', n: '[Client name]', r: '[Role, Company]' },
+    { q: '[Client review three. Paste a real testimonial here.]', n: '[Client name]', r: '[Role, Company]' }
+  ];
+  var S = { tab: 'tech', topic: 'why', rev: 0, open: -1 };
+  var $ = function (id) { return document.getElementById(id); };
+
+  function renderTopic() {
+    var why = S.topic === 'why';
+    $('t-why').className = 'topic' + (why ? ' on1' : '');
+    $('t-meaning').className = 'topic' + (!why ? ' on3' : '');
+    $('t-why').setAttribute('aria-pressed', why);
+    $('t-meaning').setAttribute('aria-pressed', !why);
+    $('topic-panel').innerHTML = why
+      ? '<div class="swap"><div class="eyebrow" style="color:var(--a1)">Why we are different</div><p>[What sets PolyAVP apart: your approach, your people, your edge over other agencies.]</p></div>'
+      : '<div class="swap"><div class="eyebrow" style="color:var(--a2)">PolyAVP meaning</div><p>[The story behind the name: what &ldquo;Poly&rdquo; and &ldquo;AVP&rdquo; stand for.]</p></div>';
+  }
+  function renderServices() {
+    var tech = S.tab === 'tech', sec = $('services').style;
+    sec.background = tech ? 'var(--a3)' : 'var(--a1)';
+    sec.color = tech ? 'var(--on3)' : 'var(--on1)';
+    $('tab-tech').className = tech ? 'on' : '';
+    $('tab-mkt').className = tech ? '' : 'on';
+    $('tab-tech').setAttribute('aria-pressed', tech);
+    $('tab-mkt').setAttribute('aria-pressed', !tech);
+    $('cards').innerHTML = COPY[S.tab].map(function (t, i) {
+      var o = S.open === i;
+      return '<button type="button" class="card reveal" style="--d:' + (i * 0.12) + 's" data-i="' + i + '" aria-expanded="' + o + '">' +
+        '<div class="top"><span class="n">0' + (i + 1) + '</span><span class="ic">' + (o ? '−' : '+') + '</span></div>' +
+        '<h3>' + t + '</h3><p>[One line on what you deliver and the outcome for the client.]</p>' +
+        (o ? '<div class="more">[More detail: what is included, how it works, who it suits.]</div>' : '') + '</button>';
+    }).join('');
+    observe();
+  }
+  var io = ('IntersectionObserver' in window) ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' }) : null;
+  function observe() {
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    for (var i = 0; i < els.length; i++) { if (io) io.observe(els[i]); else els[i].classList.add('in'); }
+  }
+  function renderReview() {
+    var r = REVIEWS[S.rev], el = $('review');
+    el.innerHTML = '<div class="mark" aria-hidden="true">&ldquo;</div><p>' + r.q + '</p><div class="who"><strong>' + r.n + '</strong> &middot; ' + r.r + '</div>';
+    el.classList.remove('swap'); void el.offsetWidth; el.classList.add('swap');
+    $('dots').innerHTML = REVIEWS.map(function (x, i) {
+      return '<button type="button" class="dot' + (i === S.rev ? ' on' : '') + '" data-i="' + i + '" aria-label="Show review ' + (i + 1) + '"></button>';
+    }).join('');
+  }
+  function setMenu(open) {
+    $('nav').classList.toggle('open', open);
+    $('menu').setAttribute('aria-expanded', open);
+    $('menu').setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  $('menu').onclick = function () { setMenu(!$('nav').classList.contains('open')); };
+  $('nav').addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  $('t-why').onclick = function () { S.topic = 'why'; renderTopic(); };
+  $('t-meaning').onclick = function () { S.topic = 'meaning'; renderTopic(); };
+  $('tab-tech').onclick = function () { S.tab = 'tech'; S.open = -1; renderServices(); };
+  $('tab-mkt').onclick = function () { S.tab = 'mkt'; S.open = -1; renderServices(); };
+  $('cards').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var i = +b.dataset.i; S.open = S.open === i ? -1 : i; renderServices();
+  });
+  $('prev').onclick = function () { S.rev = (S.rev + REVIEWS.length - 1) % REVIEWS.length; renderReview(); };
+  $('next').onclick = function () { S.rev = (S.rev + 1) % REVIEWS.length; renderReview(); };
+  $('dots').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    S.rev = +b.dataset.i; renderReview();
+  });
+  $('intro').addEventListener('mousemove', function (e) {
+    var r = $('intro').getBoundingClientRect(), g = $('glow').style;
+    g.left = (e.clientX - r.left - 240) + 'px';
+    g.top = (e.clientY - r.top - 240) + 'px';
+  });
+
+  /* scroll progress, header state, parallax, active link */
+  var root = document.documentElement, hdr = document.querySelector('header'), bar = $('bar'), ticking = false;
+  var links = [].slice.call(document.querySelectorAll('nav a.link'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function onScroll() {
+    var y = window.pageYOffset, max = root.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    hdr.classList.toggle('scrolled', y > 24);
+    if (y < window.innerHeight * 1.5) {
+      root.style.setProperty('--p1', (y * 0.18) + 'px');
+      root.style.setProperty('--p2', (y * -0.22) + 'px');
+      root.style.setProperty('--p3', (y * 0.12) + 'px');
+    }
+    var cur = -1, line = y + window.innerHeight * 0.35;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= line) cur = i; });
+    links.forEach(function (a, i) { a.classList.toggle('active', i === cur); });
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+  }, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  renderTopic(); renderServices(); renderReview(); observe(); onScroll();
+})();
+</script>
+</body>
+</html>
