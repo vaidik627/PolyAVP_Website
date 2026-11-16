@@ -20,7 +20,7 @@
 <style>
 :root{
   --bg:#061B2B;--bg2:#0B2A42;--line:#1B4A6E;--fg:#EAF6FF;--muted:#9FBBD0;
-  --blue:#86BCFF;--lcyan:#9BEFFC;--a1:#19D3C5;--on1:#061B2B;--a2:#A78BFA;--on2:#061B2B;--a3:#5EEAD4;--on3:#061B2B;
+  --navyblue:#1B46A8;--blueac:#8CC4FF;--lcyan:#9BEFFC;--a1:#19D3C5;--on1:#061B2B;--a2:#A78BFA;--on2:#061B2B;--a3:#5EEAD4;--on3:#061B2B;
   --gut:max(clamp(20px,5vw,80px),calc((100vw - 1360px)/2));
   --head:'Sora','Inter',system-ui,sans-serif;
 }
@@ -517,9 +517,9 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
   }
   function renderServices(animate) {
     var tech = S.tab === 'tech', sec = $('services').style;
-    sec.background = tech ? 'var(--blue)' : 'var(--lcyan)';
-    sec.setProperty('--sc', tech ? 'var(--blue)' : 'var(--lcyan)');      /* card numbers and hover borders follow the section colour */
-    sec.color = 'var(--on1)';
+    sec.background = tech ? 'var(--lcyan)' : 'var(--navyblue)';
+    sec.setProperty('--sc', tech ? 'var(--lcyan)' : 'var(--blueac)');      /* card numbers and hover borders follow the section colour */
+    sec.color = tech ? 'var(--on1)' : 'var(--fg)';          /* dark text on the light cyan, light text on the deep blue */
     $('tab-tech').className = tech ? 'on' : '';
     $('tab-mkt').className = tech ? '' : 'on';
     $('tab-tech').setAttribute('aria-pressed', tech);
