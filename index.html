@@ -10,7 +10,8 @@
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%277%27 fill=%27%23061B2B%27/%3E%3Cpath d=%27M16 5l8 8-8 8-8-8z%27 fill=%27%2319D3C5%27/%3E%3Cpath d=%27M16 13l8 8-8 8-8-8z%27 fill=%27%23A78BFA%27 opacity=%27.9%27/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PolyAVP | Technical &amp; Marketing Services">
 <meta property="og:description" content="Web development, automation, system design and marketing together under one roof.">
@@ -19,7 +20,7 @@
 <style>
 :root{
   --bg:#061B2B;--bg2:#0B2A42;--line:#1B4A6E;--fg:#EAF6FF;--muted:#9FBBD0;
-  --a1:#19D3C5;--on1:#061B2B;--a2:#A78BFA;--on2:#061B2B;--a3:#5EEAD4;--on3:#061B2B;
+  --blue:#86BCFF;--lcyan:#9BEFFC;--a1:#19D3C5;--on1:#061B2B;--a2:#A78BFA;--on2:#061B2B;--a3:#5EEAD4;--on3:#061B2B;
   --gut:max(clamp(20px,5vw,80px),calc((100vw - 1360px)/2));
   --head:'Sora','Inter',system-ui,sans-serif;
 }
@@ -37,7 +38,9 @@ section,header,footer{width:100%;padding-left:var(--gut);padding-right:var(--gut
 /* header */
 header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;background:rgba(6,27,43,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(27,74,110,.7)}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:22px;letter-spacing:-.02em}
-.logo i{width:20px;height:20px;background:var(--a1);transform:rotate(45deg);border-radius:5px;display:block;box-shadow:8px 8px 0 -2px var(--a2)}
+.logo img{flex:none;width:44px;height:44px;border-radius:50%;display:block;background:#fff;box-shadow:0 0 0 2px rgba(234,246,255,.14)}
+.flogo{display:inline-flex;align-items:center;gap:10px}
+.flogo img{width:28px;height:28px;border-radius:50%;display:block;background:#fff}
 nav{display:flex;align-items:center;gap:6px 28px;font-size:15px;font-weight:500}
 nav a.link{padding:10px 0;color:var(--muted);transition:color .2s ease}
 nav a.link:hover{color:var(--fg)}
@@ -63,6 +66,12 @@ h1{margin:22px 0 0;font-weight:700;font-size:clamp(34px,4.6vw,64px);line-height:
 .rise2{animation:rise .9s .15s cubic-bezier(.2,.8,.2,1) both}
 .rise3{animation:rise .9s .3s cubic-bezier(.2,.8,.2,1) both}
 .swap{animation:rise .5s ease both}
+.panel .poly{font-size:clamp(16px,1.4vw,19px)}.panel .poly strong{font-family:var(--head);font-weight:700;color:var(--fg)}
+.avp{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.avp li{flex:1 1 130px;display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:14px;border:1.5px solid var(--line);background:rgba(6,27,43,.5)}
+.avp b{font-family:var(--head);font-size:30px;line-height:1;font-weight:700}
+.avp span{font-family:var(--head);font-size:clamp(14px,1.2vw,16px);font-weight:600;letter-spacing:-.01em}
+.panel .note{margin:14px 0 0;font-size:14px;color:var(--muted)}
 .topics{display:flex;flex-wrap:wrap;gap:12px}
 .topic{display:flex;flex-direction:column;gap:4px;text-align:left;border-radius:16px;padding:16px 20px;flex:1 1 180px;border:1.5px solid var(--line);background:var(--bg2);color:var(--fg);transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
 .topic:hover{transform:translateY(-2px);box-shadow:0 6px 0 rgba(0,0,0,.28)}
@@ -89,10 +98,10 @@ h1{margin:22px 0 0;font-weight:700;font-size:clamp(34px,4.6vw,64px);line-height:
 .tabs button.on{background:var(--fg);color:var(--bg)}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:20px;margin-top:clamp(28px,4vw,44px);align-items:start}
 .card{text-align:left;border:1.5px solid var(--line);background:var(--bg2);color:var(--fg);border-radius:20px;padding:clamp(22px,2.4vw,28px);min-height:220px;width:100%;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.card:hover{transform:translateY(-5px);box-shadow:0 12px 0 rgba(0,0,0,.22);border-color:var(--a1)}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 0 rgba(0,0,0,.22);border-color:var(--sc,var(--a1))}
 .card .ct,.card .cd,.card .more{display:block}
 .card .top{display:flex;justify-content:space-between;align-items:center}
-.card .n{font-family:var(--head);font-size:clamp(34px,3.6vw,46px);font-weight:700;line-height:1;color:var(--a1);letter-spacing:-.03em}
+.card .n{font-family:var(--head);font-size:clamp(34px,3.6vw,46px);font-weight:700;line-height:1;color:var(--sc,var(--a1));letter-spacing:-.03em}
 .card .ic{width:36px;height:36px;border-radius:50%;background:var(--fg);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1}
 .card .ct{font-family:var(--head);margin:24px 0 0;font-size:clamp(18px,1.6vw,21px);font-weight:600;line-height:1.3;letter-spacing:-.015em}
 .card .cd{margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--muted)}
@@ -316,7 +325,7 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
 <div id="bar" aria-hidden="true"></div>
 
 <header>
-  <a href="#intro" class="logo"><i aria-hidden="true"></i>PolyAVP</a>
+  <a href="#intro" class="logo" aria-label="PolyAVP home"><img src="assets/logo-256.png" width="44" height="44" alt="" decoding="async">PolyAVP</a>
   <button type="button" class="menu" id="menu" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
   <nav id="nav" aria-label="Primary">
     <a class="link" href="#intro">Introduction</a>
@@ -441,13 +450,13 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
     </div>
     <div class="cta" id="cta">
       <span id="contact" aria-hidden="true"></span>
-      <div class="ctxt"><h2>Ready to build something with PolyAVP?</h2><p>Tell us what you need. Whether it is a website, an automation or a campaign, one team can take it from idea to launch.</p></div>
-      <span class="cwrap"><span class="cring" aria-hidden="true"><i></i><i></i><i></i></span><a class="btn" href="mailto:[YOUR EMAIL]" style="background:var(--fg);color:var(--bg);font-size:16px;padding:16px 32px">[YOUR EMAIL]</a></span>
+      <div class="ctxt"><h2>Ready to work &amp; grow together?</h2><p>Tell us what you need. Whether it is a website, an automation or a campaign, our team can take it from an idea to the launch.</p></div>
+      <span class="cwrap"><span class="cring" aria-hidden="true"><i></i><i></i><i></i></span><a class="btn" href="mailto:contact.polyavp@gmail.com" style="background:var(--fg);color:var(--bg);font-size:16px;padding:16px 32px">contact.polyavp@gmail.com</a></span>
     </div>
   </div>
 </section>
 </main>
-<footer><span>&copy; 2026 PolyAVP</span><span>[Location] &middot; [Social links]</span></footer>
+<footer><span class="flogo"><img src="assets/logo-256.png" width="28" height="28" alt="" loading="lazy" decoding="async">&copy; 2026 PolyAVP</span><span>India &middot; [Social links]</span></footer>
 
 <script>
 (function () {
@@ -501,12 +510,16 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
     $('t-meaning').setAttribute('aria-pressed', !why);
     $('topic-panel').innerHTML = why
       ? '<div class="swap"><div class="eyebrow" style="color:var(--a1)">Why we are different</div><p>Most businesses hire one team to build and another to promote. We do both, so what we build and how it gets found are planned together, with one point of contact and nothing lost between vendors.</p></div>'
-      : '<div class="swap"><div class="eyebrow" style="color:var(--a2)">PolyAVP meaning</div><p>&ldquo;Poly&rdquo; means many: many skills, one team. [What &ldquo;AVP&rdquo; stands for goes here.]</p></div>';
+      : '<div class="swap"><div class="eyebrow" style="color:var(--a2)">PolyAVP meaning</div>' +
+        '<p class="poly"><strong>Poly</strong> stands for flexibility.</p>' +
+        '<ul class="avp"><li><b style="color:#FF6B70">A</b><span>Adaptability</span></li><li><b style="color:#5DE2E7">V</b><span>Variability</span></li><li><b style="color:#C86DE6">P</b><span>Persistency</span></li></ul>' +
+        '<p class="note">AVP is also the initials of our founders.</p></div>';
   }
   function renderServices(animate) {
     var tech = S.tab === 'tech', sec = $('services').style;
-    sec.background = tech ? 'var(--a3)' : 'var(--a1)';
-    sec.color = tech ? 'var(--on3)' : 'var(--on1)';
+    sec.background = tech ? 'var(--blue)' : 'var(--lcyan)';
+    sec.setProperty('--sc', tech ? 'var(--blue)' : 'var(--lcyan)');      /* card numbers and hover borders follow the section colour */
+    sec.color = 'var(--on1)';
     $('tab-tech').className = tech ? 'on' : '';
     $('tab-mkt').className = tech ? '' : 'on';
     $('tab-tech').setAttribute('aria-pressed', tech);
