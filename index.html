@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#061B2B">
-<title>PolyAVP</title>
+<title>PolyAVP | Technical &amp; Marketing Services</title>
+<meta name="description" content="PolyAVP brings web development, automation, system design and digital, performance and client-acquisition marketing together under one roof.">
+
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -70,7 +72,8 @@ h1{margin:22px 0 0;font-weight:700;font-size:clamp(34px,4.6vw,64px);line-height:
 
 /* ticker */
 .marq{background:var(--a2);color:var(--on2);padding:14px 0;overflow:hidden;white-space:nowrap}
-.marq div{display:flex;gap:40px;width:max-content;animation:marq 32s linear infinite;font-family:var(--head);font-weight:600;font-size:clamp(14px,1.5vw,19px);text-transform:uppercase;letter-spacing:.14em}
+.marq div{display:flex;width:max-content;animation:marq 32s linear infinite;font-family:var(--head);font-weight:600;font-size:clamp(14px,1.5vw,19px);text-transform:uppercase;letter-spacing:.14em}
+.marq span{padding-right:40px}
 
 /* services */
 #services{padding-top:clamp(56px,7vw,104px);padding-bottom:clamp(56px,7vw,104px);transition:background .4s ease,color .4s ease}
@@ -172,7 +175,7 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
   <div class="col">
     <div class="eyebrow rise" style="color:var(--a1);display:inline-flex;align-items:center;gap:10px">01 — Introduction</div>
     <h1 class="rise2">Many skills.<br><span style="color:var(--a1)">One</span> partner.</h1>
-    <p class="lead rise3">[Two sentences introducing PolyAVP: who you are, who you help and the result clients can expect.]</p>
+    <p class="lead rise3">PolyAVP brings technical and marketing services together under one roof. We help growing businesses get online, work smarter and reach the right customers, without juggling separate vendors.</p>
     <div class="rise3" style="display:flex;flex-wrap:wrap;gap:16px;margin-top:36px">
       <a class="btn" href="#services" style="background:var(--a3);color:var(--on3);font-size:16px;padding:14px 28px">See our services</a>
       <a class="btn" href="#work" style="border:2px solid var(--fg);color:var(--fg);font-size:16px;padding:12px 28px">Work we did</a>
@@ -190,7 +193,7 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
 </section>
 
 <div class="marq" aria-hidden="true"><div>
-  <span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span><span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span><span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span><span>Technical ◆ Marketing ◆ Strategy ◆ Delivery ◆</span>
+  <span>Web Development ◆ Automation ◆ System Design ◆ Digital Marketing ◆ Performance Marketing ◆ Client Acquisition ◆</span><span>Web Development ◆ Automation ◆ System Design ◆ Digital Marketing ◆ Performance Marketing ◆ Client Acquisition ◆</span><span>Web Development ◆ Automation ◆ System Design ◆ Digital Marketing ◆ Performance Marketing ◆ Client Acquisition ◆</span><span>Web Development ◆ Automation ◆ System Design ◆ Digital Marketing ◆ Performance Marketing ◆ Client Acquisition ◆</span>
 </div></div>
 
 <section id="services">
@@ -229,13 +232,33 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
   <h2 class="reveal l">Ready to build something with PolyAVP?</h2>
   <a class="btn reveal r" href="mailto:[YOUR EMAIL]" style="background:var(--fg);color:var(--bg);font-size:16px;padding:16px 32px;--d:.2s">[YOUR EMAIL]</a>
 </section>
-<footer class="reveal"><span>&copy; PolyAVP</span><span>[Location] &middot; [Social links]</span></footer>
+<footer class="reveal"><span>&copy; 2026 PolyAVP</span><span>[Location] &middot; [Social links]</span></footer>
 
 <script>
 (function () {
   var COPY = {
-    tech: ['[Technical service one]', '[Technical service two]', '[Technical service three]'],
-    mkt: ['[Marketing service one]', '[Marketing service two]', '[Marketing service three]']
+    tech: [
+      { t: 'Web Development',
+        d: 'Fast, clean, mobile-ready websites that present your business properly and turn visitors into enquiries.',
+        m: 'Business sites, landing pages and simple web apps, built from scratch and tuned for speed, search visibility and easy updates. Suits businesses that need a solid online presence without an enterprise-sized budget.' },
+      { t: 'Automation',
+        d: 'Hand repetitive work to software, so your team spends its time on what actually grows the business.',
+        m: 'We connect your tools and automate tasks such as lead capture, follow-ups, reporting, invoicing and data entry. Suits teams losing hours every week to manual, repeated steps.' },
+      { t: 'System Design',
+        d: 'Clear architecture for the tools and workflows your business runs on, planned before anything gets built.',
+        m: 'We map how your data, apps and processes fit together, then design a system that scales with you: databases, integrations and workflows. Suits businesses outgrowing spreadsheets or stitched-together tools.' }
+    ],
+    mkt: [
+      { t: 'Digital Marketing',
+        d: 'A consistent, well-targeted presence on the channels where your customers already spend their time.',
+        m: 'Content, social media, SEO and email, planned around your audience and brand voice. Suits businesses that want steady visibility and a brand people recognise.' },
+      { t: 'Performance Marketing',
+        d: 'Paid campaigns tied to measurable outcomes: leads, sign-ups and sales, not just clicks.',
+        m: 'We set up, track and keep optimising ad campaigns on platforms such as Google and Meta, and report on cost per lead and return on spend. Suits businesses that want growth they can measure.' },
+      { t: 'Client Acquisition',
+        d: 'A steady pipeline of qualified prospects, so your sales conversations start with the right people.',
+        m: 'We find and reach your ideal clients through lead generation, outreach and funnels that capture and nurture enquiries. Suits service businesses that need more qualified leads and booked calls.' }
+    ]
   };
   var REVIEWS = [
     { q: '[Client review one. Paste a real testimonial here.]', n: '[Client name]', r: '[Role, Company]' },
@@ -252,10 +275,10 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
     $('t-why').setAttribute('aria-pressed', why);
     $('t-meaning').setAttribute('aria-pressed', !why);
     $('topic-panel').innerHTML = why
-      ? '<div class="swap"><div class="eyebrow" style="color:var(--a1)">Why we are different</div><p>[What sets PolyAVP apart: your approach, your people, your edge over other agencies.]</p></div>'
-      : '<div class="swap"><div class="eyebrow" style="color:var(--a2)">PolyAVP meaning</div><p>[The story behind the name: what &ldquo;Poly&rdquo; and &ldquo;AVP&rdquo; stand for.]</p></div>';
+      ? '<div class="swap"><div class="eyebrow" style="color:var(--a1)">Why we are different</div><p>Most businesses hire one team to build and another to promote. We do both, so what we build and how it gets found are planned together, with one point of contact and nothing lost between vendors.</p></div>'
+      : '<div class="swap"><div class="eyebrow" style="color:var(--a2)">PolyAVP meaning</div><p>&ldquo;Poly&rdquo; means many: many skills, one team. [What &ldquo;AVP&rdquo; stands for goes here.]</p></div>';
   }
-  function renderServices() {
+  function renderServices(animate) {
     var tech = S.tab === 'tech', sec = $('services').style;
     sec.background = tech ? 'var(--a3)' : 'var(--a1)';
     sec.color = tech ? 'var(--on3)' : 'var(--on1)';
@@ -263,12 +286,12 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
     $('tab-mkt').className = tech ? '' : 'on';
     $('tab-tech').setAttribute('aria-pressed', tech);
     $('tab-mkt').setAttribute('aria-pressed', !tech);
-    $('cards').innerHTML = COPY[S.tab].map(function (t, i) {
+    $('cards').innerHTML = COPY[S.tab].map(function (c, i) {
       var o = S.open === i;
-      return '<button type="button" class="card reveal" style="--d:' + (i * 0.12) + 's" data-i="' + i + '" aria-expanded="' + o + '">' +
+      return '<button type="button" class="card' + (animate ? ' reveal' : '') + '" style="--d:' + (i * 0.12) + 's" data-i="' + i + '" aria-expanded="' + o + '">' +
         '<div class="top"><span class="n">0' + (i + 1) + '</span><span class="ic">' + (o ? '−' : '+') + '</span></div>' +
-        '<h3>' + t + '</h3><p>[One line on what you deliver and the outcome for the client.]</p>' +
-        (o ? '<div class="more">[More detail: what is included, how it works, who it suits.]</div>' : '') + '</button>';
+        '<h3>' + c.t + '</h3><p>' + c.d + '</p>' +
+        (o ? '<div class="more">' + c.m + '</div>' : '') + '</button>';
     }).join('');
     observe();
   }
@@ -297,11 +320,12 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
   $('nav').addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
   $('t-why').onclick = function () { S.topic = 'why'; renderTopic(); };
   $('t-meaning').onclick = function () { S.topic = 'meaning'; renderTopic(); };
-  $('tab-tech').onclick = function () { S.tab = 'tech'; S.open = -1; renderServices(); };
-  $('tab-mkt').onclick = function () { S.tab = 'mkt'; S.open = -1; renderServices(); };
+  $('tab-tech').onclick = function () { S.tab = 'tech'; S.open = -1; renderServices(true); };
+  $('tab-mkt').onclick = function () { S.tab = 'mkt'; S.open = -1; renderServices(true); };
   $('cards').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return;
-    var i = +b.dataset.i; S.open = S.open === i ? -1 : i; renderServices();
+    var i = +b.dataset.i; S.open = S.open === i ? -1 : i; renderServices(false);
+    var nb = $('cards').querySelector('[data-i="' + i + '"]'); if (nb) nb.focus();
   });
   $('prev').onclick = function () { S.rev = (S.rev + REVIEWS.length - 1) % REVIEWS.length; renderReview(); };
   $('next').onclick = function () { S.rev = (S.rev + 1) % REVIEWS.length; renderReview(); };
@@ -338,7 +362,7 @@ nav a.link.active{color:var(--fg);box-shadow:inset 0 -2px 0 var(--a1)}
   }, { passive: true });
   window.addEventListener('resize', onScroll);
 
-  renderTopic(); renderServices(); renderReview(); observe(); onScroll();
+  renderTopic(); renderServices(true); renderReview(); observe(); onScroll();
 })();
 </script>
 </body>
